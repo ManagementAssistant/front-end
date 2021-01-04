@@ -1,0 +1,8 @@
+{
+    "BaseUrl": "//localhost:2323",
+    "ApiPrefix": "api",
+    "AppName": "Yönetim Asistanı",
+    "CopyrightText": "BHA © 2021",
+    "CommercialTitle": "BHA Technology",
+    "DefaultLanguage": "tr"
+}
