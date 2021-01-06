@@ -130,5 +130,10 @@
   "defaultProject": "BHA-ManagementAssistant-Angular",
   "cli": {
     "analytics": "c45b575e-65fb-4dbf-8c86-2768666d156f"
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
   }
 }
