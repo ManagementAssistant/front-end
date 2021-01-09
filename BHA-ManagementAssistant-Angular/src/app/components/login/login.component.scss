@@ -1,0 +1,31 @@
+@import '/src/styles.scss';
+@import '../login/login.inputs.scss';
+
+.login{
+    @include fullscreen($loginBackgroundColor)
+};
+
+.loginPanel{
+    width: 26vw;
+    height: 40vh;
+    border-radius: 8px;
+    -webkit-box-shadow: 2px 0 60px 0 $iconsBlackCode;
+    box-shadow: 2px 0 60px 0 $iconsBlackCode;
+    border-width: 3px;
+    border-color: $whiteColorCode;
+    justify-content: center;
+};
+
+.line{
+    border-left: $onepxValue solid $iconsBlackCode;
+    height: 33vh;
+    width: $onepxValue;
+    margin-left: 25px;
+}
+
+.copyright{
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    color: $whiteColorCode;
+}

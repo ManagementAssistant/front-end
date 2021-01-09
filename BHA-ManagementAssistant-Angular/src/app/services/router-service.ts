@@ -13,6 +13,6 @@ export class RouterService extends BaseService {
     }
 
     public Decider(): void {
-        // this.router.navigate([loginPath]);
+        this.router.navigate([loginPath]);
     }
 }

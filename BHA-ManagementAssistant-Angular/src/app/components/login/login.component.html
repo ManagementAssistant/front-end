@@ -1,1 +1,34 @@
-<div class="login"></div>
+<div class="login">
+  <div class="row align-items-center justify-content-center" style="height:100vh;">
+    <div class="card row loginPanel">
+      <div class="col col-lg-2">
+        <img src='assets\icons\icon.png' width="150" height="150">
+      </div>
+      <hr class="line">
+      <div class="col col-lg-6 loginForm">
+        <div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate="Enter username">
+          <input class="input100" type="text" name="username" [ngClass]="inputsClass()" (blur)="onBlur($event)"
+            autocomplete="off">
+          <span class="focus-input100" data-placeholder="Kullanıcı Adı"></span>
+        </div>
+
+        <div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">
+          <input class="input100" type="password" name="pass" [ngClass]="inputsClass()" (blur)="onBlur($event)"
+            autocomplete="off">
+          <span class="focus-input100" data-placeholder="Parola"></span>
+        </div>
+
+        <div class="container-login100-form-btn">
+          <button class="login100-form-btn">
+            Giriş
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="copyright">
+    <small>
+      Yönetim Asistanı, BHA Teknoloji San. ve Tic. Ltd. Şti. tescilli markasıdır. Tüm hakları saklıdır. © 2021 BHA
+    </small>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+/*region values*/
+$zeropxValue: 0px;
+$onepxValue: 1px;
+$fullWidthValue: 100vw;
+$fullHeightValue: 100vh;
+$percent: 100%;
+$fiftyPercent: 50%;
+$zeroPercent: 0%;
+/*endregion*/
+
+/*region colors*/
+$iconsBlueCode: #7599CA;
+$iconsRedCode: #FD5F54;
+$iconsGreyCode: #516274;
+$iconsBlackCode: #000000;
+$purpleColorCode: #7579ff;
+$pinkColorCode: #b224ef;
+$lilacColorCode: #a3abce;
+$whiteColorCode: white;
+
+$loginBackgroundColor: radial-gradient(ellipse at center, $iconsBlueCode $zeroPercent, $iconsGreyCode $percent);
+/*endregion*/
+
+@mixin fullscreen($image) {
+    position: fixed;
+    background-image: $image;
+    height: $fullHeightValue;
+    width: $fullWidthValue;
+}
