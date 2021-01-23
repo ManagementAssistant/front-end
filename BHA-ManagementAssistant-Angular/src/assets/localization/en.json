@@ -1,0 +1,5 @@
+{
+    "global": {
+        "required.error.message": "Please enter a valid value!"
+    }
+}

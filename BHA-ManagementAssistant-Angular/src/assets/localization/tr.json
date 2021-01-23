@@ -1,0 +1,5 @@
+{
+    "global": {
+        "required.error.message": "Lütfen geçerli bir değer giriniz!"
+    }
+}

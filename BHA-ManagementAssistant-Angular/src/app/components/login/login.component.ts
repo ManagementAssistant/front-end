@@ -1,27 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { MatInput } from '@angular/material/input/input';
+import { TranslateService } from '@ngx-translate/core';
+import { BaseComponent } from 'src/app/core/components/base-component';
+import { LocalizationService } from 'src/app/services/localization-service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent extends BaseComponent implements OnInit {
 
   private ngClassValue: boolean = false;
+  public email: string = 'Email';
+  public type: string = 'email';
+  public placeHolder: string = 'örnek@bha.com';
+  public hint: string = 'Hint';
 
-  constructor() { }
+  constructor(viewContainerRef: ViewContainerRef) {
+    super(viewContainerRef)
+  }
 
-  inputsClass(){
+  inputsClass() {
     return { 'has-val': this.ngClassValue }
   }
 
-  onBlur(e: any){
+  loginButtonClick(e: any) {
+    console.log(e);
+  }
+
+  onBlur(e: any) {
     let onValue: string = e.target.value.trim();
     if (onValue != "") {
-        this.ngClassValue = true;
+      this.ngClassValue = true;
     }
-    else{
-        this.ngClassValue = false;
+    else {
+      this.ngClassValue = false;
     }
   }
 
