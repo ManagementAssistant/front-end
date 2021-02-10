@@ -16,6 +16,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 const localizationPrefix: string = "/assets/localization/";
 // http://localhost:4200/assets/i18n/tr.json
@@ -51,7 +52,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule,
     //#region Angular Material Modules
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule
     //#endregion
   ],
   providers: [],

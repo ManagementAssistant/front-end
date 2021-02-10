@@ -65,3 +65,11 @@ $loginBackgroundColor: radial-gradient(ellipse at center, $iconsBlueCode $zeroPe
 }
 html, body { height: 100%; }
 body {   font-family: Roboto, Arial, sans-serif; margin: 0; }
+
+//Button etrafında çıkan borderı engellemek için
+button:focus, 
+button:active:focus, 
+button.active:focus {
+    outline: none !important;
+    outline-style: none !important;
+}

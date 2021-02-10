@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
-import { MatInput } from '@angular/material/input/input';
-import { TranslateService } from '@ngx-translate/core';
+import { Component, ElementRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Validators } from '@angular/forms';
 import { BaseComponent } from 'src/app/core/components/base-component';
-import { LocalizationService } from 'src/app/services/localization-service';
+import { FormControlValidation } from 'src/app/models/form-control-validation';
+import { StylesOptions } from 'src/app/models/styles-options';
 
 @Component({
   selector: 'app-login',
@@ -11,35 +11,25 @@ import { LocalizationService } from 'src/app/services/localization-service';
 })
 export class LoginComponent extends BaseComponent implements OnInit {
 
-  private ngClassValue: boolean = false;
-  public email: string = 'Email';
-  public type: string = 'email';
-  public placeHolder: string = 'örnek@bha.com';
-  public hint: string = 'Hint';
+  // public formControlValidationArray: FormControlValidation[] = [];
+  public cssOptions: StylesOptions = new StylesOptions();
 
   constructor(viewContainerRef: ViewContainerRef) {
     super(viewContainerRef)
-  }
 
-  inputsClass() {
-    return { 'has-val': this.ngClassValue }
-  }
-
-  loginButtonClick(e: any) {
-    console.log(e);
-  }
-
-  onBlur(e: any) {
-    let onValue: string = e.target.value.trim();
-    if (onValue != "") {
-      this.ngClassValue = true;
-    }
-    else {
-      this.ngClassValue = false;
-    }
+    this.cssOptions.padding = ['', '', '', '10px', ''];
+    // let formControlValidation: FormControlValidation = new FormControlValidation();
+    // formControlValidation.Validator = Validators.email;
+    // formControlValidation.Message = "Geçerli bir mail adresi girmelisiniz";
+    // this.formControlValidationArray.push(formControlValidation);
   }
 
   ngOnInit(): void {
+
+  }
+
+  ngAfterViewInit(): void {
+
   }
 
 }

@@ -1,5 +1,4 @@
 @import '/src/styles.scss';
-@import '../login/login.inputs.scss';
 
 .login{
     @include fullscreen($loginBackgroundColor)
@@ -20,7 +19,7 @@
     border-left: $onepxValue solid $iconsBlackCode;
     height: 33vh;
     width: $onepxValue;
-    margin-left: 25px;
+    margin-left: 21%;
 }
 
 .copyright{
@@ -28,4 +27,9 @@
     bottom: 30px;
     left: 30px;
     color: $whiteColorCode;
+}
+
+.mat-fab {
+    color: #fff !important;
+    background-color: $iconsBlueCode !important;
 }

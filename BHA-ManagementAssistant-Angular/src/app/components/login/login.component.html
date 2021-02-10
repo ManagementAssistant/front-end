@@ -1,53 +1,32 @@
 <div class="login">
   <div class="row align-items-center justify-content-center" style="height:100vh;">
     <div class="card row loginPanel">
-      <div class="col col-lg-2">
-        <img src='assets\icons\icon.png' width="150" height="150">
+      <div class="col col-lg-2" width="100vw" height="100vh">
+        <img src='assets\icons\icon.png' class="icon" width="180vw" height="180vh">
       </div>
       <hr class="line">
       <div class="col col-lg-6 loginForm">
         <form class="example-form">
-          <!-- <mat-form-field class="example-full-width"> -->
-          <mat-input [label]='email' [type]="type" [placeHolder]="placeHolder" [hint]="hint" [required]="true">
+          <mat-input name="username" label="{{ 'global.username' | translate }}" [stylesOptions]="cssOptions"
+            [required]="true">
           </mat-input>
-          <!-- <mat-label>Email</mat-label>
-            <input type="email" matInput 
-                   placeholder="Ex. pat@example.com">
 
-            <mat-hint>Errors appear instantly! </mat-hint>
-            <mat-error>
-              Please enter a valid email address
-            </mat-error>
-            <mat-error >
-              Email is <strong>required</strong>
-            </mat-error> -->
-          <!-- </mat-form-field> -->
+          <mat-input name="password" label="{{ 'global.password' | translate }}" type="password" [required]="true">
+          </mat-input>
+
+          <div style="padding-top: 10px; padding-left: 55px; margin-top: 20px;">
+            <button mat-fab>
+              <mat-icon>home</mat-icon>
+            </button>
+          </div>
+
+          <!-- <div class="container-login100-form-btn">
+            <button class="login100-form-btn" (click)="loginButtonClick($event)">
+              Giriş
+            </button>
+          </div> -->
+
         </form>
-        <!-- <mat-item Input></mat-item>
-          <mat-form-field class="example-full-width">
-          <mat-label>Email</mat-label>
-          <mat-hint>Errors appear instantly!</mat-hint>
-        </mat-form-field> -->
-        <!-- <input type="email" matInput 
-                   placeholder="Ex. pat@example.com"> -->
-        <!-- <div class="wrap-input100 validate-input m-t-85 m-b  -35" data-validate="Enter username">
-          <input class="input100" type="text" name="username" [ngClass]="inputsClass()" (blur)="onBlur($event)"
-            autocomplete="off">
-          <span class="focus-input100" data-placeholder="Kullanıcı Adı"></span>
-        </div>
-
-        <div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">
-          <input class="input100" type="password" name="pass" [ngClass]="inputsClass()" (blur)="onBlur($event)"
-            autocomplete="off">
-          <span class="focus-input100" data-placeholder="Parola"></span>
-        </div>
-
-        <div class="container-login100-form-btn">
-          <button class="login100-form-btn" (click)="loginButtonClick($event)">
-            Giriş
-          </button>
-        </div> -->
-
       </div>
     </div>
   </div>

@@ -7,7 +7,6 @@ export abstract class BaseComponent implements OnInit, OnDestroy, AfterViewInit 
     private _localizationService?: LocalizationService;
 
     constructor(public viewContainerRef: ViewContainerRef) {
-        this.runDefaultTasks();
     }
 
     protected get injector(): Injector {
@@ -23,6 +22,7 @@ export abstract class BaseComponent implements OnInit, OnDestroy, AfterViewInit 
     }
 
     ngOnInit() {
+        this.runDefaultTasks();
     }
 
     ngOnDestroy() {

@@ -1,6 +1,9 @@
 import { AfterViewInit, Directive, Input, OnDestroy, OnInit, ViewContainerRef } from "@angular/core";
-import { isExpressionBlank } from "src/app/Utilities/Helpers";
+import { FormControl, Validators } from "@angular/forms";
+import { FormControlValidation } from "src/app/models/form-control-validation";
+import { isEmpty, isExpressionBlank } from "src/app/Utilities/Helpers";
 import { BaseComponent } from "./base-component";
+import { ValidatorFn } from "@angular/forms";
 
 @Directive()
 export abstract class BaseInputComponent extends BaseComponent implements OnInit, OnDestroy, AfterViewInit {
@@ -21,10 +24,15 @@ export abstract class BaseInputComponent extends BaseComponent implements OnInit
   public hint: string = '';
 
   @Input('requiredErrorMessage')
-  public requiredErrorMessage: string = '';
+  public requiredErrorMessage: string = 'global.required.error.message';
 
   @Input('autoComplate')
   public autoComplate: boolean = false;
+
+  @Input('formControlValidationArray')
+  public formControlValidationArray: FormControlValidation[] = [];
+
+  public formControl: FormControl = new FormControl('', []);
 
   constructor(viewContainerRef: ViewContainerRef) {
     super(viewContainerRef);
@@ -32,16 +40,33 @@ export abstract class BaseInputComponent extends BaseComponent implements OnInit
 
   runDefaultTasks(): void {
     super.runDefaultTasks();
+
+    this.createFormControl();
   }
 
-  private setRequiredErrorMessage(): void {
-    let messagesKey: string = 'global.required.error.message';
+  private createFormControl(): void {
+    let validatorArray: ValidatorFn[] = [];
 
-    if (this.requiredErrorMessage != '') {
-      messagesKey = this.requiredErrorMessage;
+    if (this.isBeValueFormControlValidationArray) {
+      this.required = true; //Herhangi bir uyuşmazlık bildirebilmesi için mutlaka zorunlu olmalıdır. --BHA 2021-01-24
     }
 
-    this.localizationService.get(messagesKey).subscribe((message) => this.requiredErrorMessage = message);
+    if (this.required) {
+      let requiredValidation: FormControlValidation = new FormControlValidation();
+      this.localizationService.get(this.requiredErrorMessage).subscribe((message) => requiredValidation.Message = message);
+      requiredValidation.Validator = Validators.required;
+      this.formControlValidationArray.push(requiredValidation);
+    }
+
+    if (this.isBeValueFormControlValidationArray) {
+      this.formControlValidationArray.forEach(formControlValidation => {
+        validatorArray.push(formControlValidation.Validator ?? Validators.nullValidator);
+      });
+    }
+
+    if (isEmpty(validatorArray.length) === false) {
+      this.formControl.setValidators(validatorArray);
+    }
   }
 
   public get isBeValuePlaceHolder(): boolean {
@@ -54,6 +79,7 @@ export abstract class BaseInputComponent extends BaseComponent implements OnInit
   }
 
   public get isBeValueLabel(): boolean {
+    console.log(this.label);
     let condition: boolean = false;
     if (isExpressionBlank(this.label) === false) {
       condition = true;
@@ -80,11 +106,18 @@ export abstract class BaseInputComponent extends BaseComponent implements OnInit
     return condition;
   }
 
+  public get isBeValueFormControlValidationArray(): boolean {
+    let condition: boolean = false;
+    if (isEmpty(this.formControlValidationArray) === false) {
+      condition = true;
+    }
+
+    return condition;
+  }
+
 
   ngOnInit() {
     super.ngOnInit();
-
-    this.setRequiredErrorMessage();
   }
 
   ngOnDestroy() {
@@ -92,7 +125,7 @@ export abstract class BaseInputComponent extends BaseComponent implements OnInit
   }
 
   ngAfterViewInit() {
-    super.ngAfterViewInit();
+    super.ngAfterViewInit();  
   }
 
 }

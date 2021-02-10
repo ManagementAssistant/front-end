@@ -1,5 +1,7 @@
 {
     "global": {
-        "required.error.message": "Please enter a valid value!"
+        "required.error.message": "Please enter a valid value!",
+        "username": "User Name",
+        "password": "Password"
     }
 }

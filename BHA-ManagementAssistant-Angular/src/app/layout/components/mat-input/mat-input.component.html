@@ -1,13 +1,11 @@
-<mat-form-field class="example-full-width">
+<mat-form-field class="example-full-width" [style]="styles">
     <mat-label *ngIf="isBeValueLabel"> {{ label }} </mat-label>
-    <!-- [formControl]="emailFormControl" [errorStateMatcher]="matcher" -->
-    <input matInput [formControl]="emailFormControl" [placeholder]="placeHolder"
-        [autocomplete]="autoComplate ? 'on' : 'off'">
+    <input matInput [formControl]="formControl" [placeholder]="placeHolder" [autocomplete]="autoComplate ? 'on' : 'off'"
+        [type]="type">
     <mat-hint *ngIf="isBeValueHint">{{ hint }}</mat-hint>
-    <mat-error *ngIf="required && emailFormControl.hasError('required')">
-        {{ requiredErrorMessage | translate }}
+    <mat-error *ngFor="let error of formControlValidationArray;">
+        <mat-error *ngIf="formControl.hasError(error.Validator ? error.Validator.name : '')">
+            {{ error.Message ? error.Message : '' | translate }}
+        </mat-error>
     </mat-error>
 </mat-form-field>
-<!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-    Please enter a valid email address
-</mat-error> -->
