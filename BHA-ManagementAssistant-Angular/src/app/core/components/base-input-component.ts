@@ -45,6 +45,7 @@ export abstract class BaseInputComponent extends BaseComponent implements OnInit
   }
 
   private createFormControl(): void {
+
     let validatorArray: ValidatorFn[] = [];
 
     if (this.isBeValueFormControlValidationArray) {
@@ -79,7 +80,6 @@ export abstract class BaseInputComponent extends BaseComponent implements OnInit
   }
 
   public get isBeValueLabel(): boolean {
-    console.log(this.label);
     let condition: boolean = false;
     if (isExpressionBlank(this.label) === false) {
       condition = true;
@@ -115,7 +115,6 @@ export abstract class BaseInputComponent extends BaseComponent implements OnInit
     return condition;
   }
 
-
   ngOnInit() {
     super.ngOnInit();
   }
@@ -125,7 +124,7 @@ export abstract class BaseInputComponent extends BaseComponent implements OnInit
   }
 
   ngAfterViewInit() {
-    super.ngAfterViewInit();  
+    super.ngAfterViewInit();
   }
 
 }

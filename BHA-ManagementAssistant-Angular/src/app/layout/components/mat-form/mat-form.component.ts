@@ -1,55 +1,24 @@
-import { Component, OnInit, ViewContainerRef, AfterViewInit, Input, forwardRef, ViewChild, ElementRef, Renderer2 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, OnInit, ViewContainerRef, AfterViewInit, ElementRef, Input } from '@angular/core';
 import { BaseInputComponent } from 'src/app/core/components/base-input-component';
 import { zero } from 'src/app/core/constant/number-constant';
 import { StylesOptions } from 'src/app/models/styles-options';
 import { isExpressionBlank, isNullOrUndefined } from 'src/app/Utilities/Helpers';
 
 @Component({
-  selector: 'mat-input',
-  templateUrl: './mat-input.component.html',
-  styleUrls: ['./mat-input.component.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: MatInputComponent,
-      multi: true
-    }
-  ]
+  selector: 'mat-form',
+  templateUrl: './mat-form.component.html',
+  styleUrls: ['./mat-form.component.scss']
 })
-export class MatInputComponent extends BaseInputComponent implements OnInit, AfterViewInit, ControlValueAccessor {
-
-  onChange: any = () => { };
-  onTouched: any = () => { };
+export class MatInputComponent extends BaseInputComponent implements OnInit, AfterViewInit {
 
   @Input('stylesOptions')
   public stylesOptions?: StylesOptions;
 
-  @ViewChild('input', {static: true, read: ElementRef})
-  inputElementRef?: ElementRef;
-
   public styles: string = '';
   public labelColorCode: string = "magenta";
 
-  constructor(viewContainerRef: ViewContainerRef, private _renderer: Renderer2) {
+  constructor(viewContainerRef: ViewContainerRef) {
     super(viewContainerRef);
-  }
-
-  onInputChange() {
-    const value = this.inputElementRef?.nativeElement.value;
-    this.onChange(value);
-  }
-
-  writeValue(value: string): void {
-    this._renderer.setProperty(this.inputElementRef?.nativeElement, 'value', value);
-  }
-
-  registerOnChange(fn: any): void {
-    this.onChange = fn;
-  }
-
-  registerOnTouched(fn: any): void {
-    this.onTouched = fn;
   }
 
   setCssOptions(): void {

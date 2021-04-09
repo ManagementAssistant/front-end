@@ -1,8 +1,7 @@
-import { Component, ElementRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { Validators } from '@angular/forms';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { BaseComponent } from 'src/app/core/components/base-component';
-import { FormControlValidation } from 'src/app/models/form-control-validation';
 import { StylesOptions } from 'src/app/models/styles-options';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -13,19 +12,22 @@ export class LoginComponent extends BaseComponent implements OnInit {
 
   // public formControlValidationArray: FormControlValidation[] = [];
   public cssOptions: StylesOptions = new StylesOptions();
+  public withUserNameForm = this._formBuilder.group({
+    username: '',
+    userpassword: ''
+  });
 
-  constructor(viewContainerRef: ViewContainerRef) {
+  constructor(viewContainerRef: ViewContainerRef, private _formBuilder: FormBuilder) {
     super(viewContainerRef)
-
     this.cssOptions.padding = ['', '', '', '10px', ''];
-    // let formControlValidation: FormControlValidation = new FormControlValidation();
-    // formControlValidation.Validator = Validators.email;
-    // formControlValidation.Message = "Geçerli bir mail adresi girmelisiniz";
-    // this.formControlValidationArray.push(formControlValidation);
   }
 
   ngOnInit(): void {
 
+  }
+
+  onSubmit() {
+    console.log(this.withUserNameForm.value);
   }
 
   ngAfterViewInit(): void {

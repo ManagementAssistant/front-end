@@ -13,7 +13,11 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$BHA-ManagementAssistant-Angular-primary: mat-palette($mat-indigo);
+$customize-theme: (
+    50: #7599CA,
+    contrast: ()
+);
+$BHA-ManagementAssistant-Angular-primary: mat-palette($customize-theme, 50);
 $BHA-ManagementAssistant-Angular-accent: mat-palette($mat-pink, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).

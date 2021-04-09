@@ -2,6 +2,7 @@
     "global": {
         "required.error.message": "Please enter a valid value!",
         "username": "User Name",
-        "password": "Password"
+        "password": "Password",
+        "copyright.text": "Management Assistant, BHA Teknoloji San. ve Tic. Ltd. Şti. registered trademark. All rights reserved. © 2021 BHA"
     }
 }

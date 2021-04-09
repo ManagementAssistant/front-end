@@ -1,10 +1,10 @@
 @import '/src/styles.scss';
 
-.login{
+.login {
     @include fullscreen($loginBackgroundColor)
 };
 
-.loginPanel{
+.login-panel {
     width: 26vw;
     height: 40vh;
     border-radius: 8px;
@@ -15,21 +15,62 @@
     justify-content: center;
 };
 
-.line{
+.login-form {
+    right: -12px;
+}
+
+.line {
     border-left: $onepxValue solid $iconsBlackCode;
     height: 33vh;
     width: $onepxValue;
     margin-left: 21%;
 }
 
-.copyright{
+.copyright {
     position: fixed;
     bottom: 30px;
     left: 30px;
     color: $whiteColorCode;
 }
 
-.mat-fab {
+.mat-raised-button {
     color: #fff !important;
     background-color: $iconsBlueCode !important;
+    width: 110px !important;
+}
+
+// a {
+//     color:$iconsBlueCode !important;
+//     cursor: pointer;
+//     font-weight: 500;
+//     padding: 30px;
+//     // position: relative;
+//     // right: -160px;
+//     // top: 58px;
+//     &:hover {
+//         color: $iconsGreyCode !important;
+//     }
+//     &:active {
+//         pointer-events: none;
+//         cursor: not-allowed;
+//     }
+// }
+
+// .helperbuttons {
+//     position: relative;
+//     top: 65px;
+// }
+
+// .contact {
+//     position: relative;
+//     right: 30px;
+// }
+
+// .demo {
+//     position: relative;
+//     left: 60px;
+// }
+
+@media (max-width:1096px) {
+
 }

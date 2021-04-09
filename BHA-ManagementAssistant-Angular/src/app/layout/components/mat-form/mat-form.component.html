@@ -1,7 +1,7 @@
 <mat-form-field class="example-full-width alternate-theme" [style]="styles">
     <mat-label> {{ label }} </mat-label>
-    <input matInput [formControl]="formControl"
-        [placeholder]="placeHolder" [autocomplete]="autoComplate ? 'on' : 'off'" [type]="type" (input)="onInputChange()" #input>
+    <input matInput [formControl]="formControl" [placeholder]="placeHolder" [autocomplete]="autoComplate ? 'on' : 'off'"
+        [type]="type">
     <mat-hint *ngIf="isBeValueHint">{{ hint }}</mat-hint>
     <mat-error *ngFor="let error of formControlValidationArray;">
         <mat-error *ngIf="formControl.hasError(error.Validator ? error.Validator.name : '')">

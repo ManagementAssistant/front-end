@@ -17,6 +17,10 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { DisplaySheetComponent } from './components/login/display-sheet/display-sheet.component';
+import { MatListModule } from '@angular/material/list';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { LayoutModule } from './layout/layout.module';
 
 const localizationPrefix: string = "/assets/localization/";
 // http://localhost:4200/assets/i18n/tr.json
@@ -32,12 +36,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     RouteNotFoundComponent,
     LoginComponent,
     InputDirective,
-    MatInputComponent
+    MatInputComponent,
+    DisplaySheetComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ServiceModule,
+    LayoutModule,
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
@@ -53,7 +59,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     //#region Angular Material Modules
     MatButtonModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatListModule,
+    MatBottomSheetModule,
     //#endregion
   ],
   providers: [],
