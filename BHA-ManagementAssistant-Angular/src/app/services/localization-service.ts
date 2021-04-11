@@ -10,7 +10,6 @@ import { BaseService } from "../core/services/base-service";
 export class LocalizationService extends BaseService {
 
     private _languages: string[] = [];
-    private _example: string = '';
 
     constructor(injector: Injector, private translate: TranslateService) {
         super(injector);

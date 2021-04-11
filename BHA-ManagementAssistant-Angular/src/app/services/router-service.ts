@@ -1,5 +1,5 @@
 import { Injectable, Injector } from "@angular/core";
-import { loginPath } from "../core/constant/common-constant";
+import { defaultPath, loginPath } from "../core/constant/common-constant";
 import { BaseService } from "../core/services/base-service";
 
 @Injectable()
@@ -13,6 +13,14 @@ export class RouterService extends BaseService {
     }
 
     public Decider(): void {
+
+    }
+
+    public NavigateLogin(): void {
         this.router.navigate([loginPath]);
+    }
+
+    public NavigateDashboard(): void {
+        this.router.navigate([defaultPath]);
     }
 }

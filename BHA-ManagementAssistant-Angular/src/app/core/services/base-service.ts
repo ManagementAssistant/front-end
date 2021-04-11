@@ -1,6 +1,5 @@
-import { Inject, Injector } from "@angular/core";
+import { Injector } from "@angular/core";
 import { Router } from "@angular/router";
-import { AbstractWebDriver } from "protractor/built/browser";
 import { IService } from "./iservice";
 
 export abstract class BaseService implements IService {

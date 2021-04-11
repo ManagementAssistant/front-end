@@ -12,7 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { InputDirective } from './core/directives/input.directive';
 import { MatInputComponent } from './layout/components/mat-input/mat-input.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -21,9 +21,10 @@ import { DisplaySheetComponent } from './components/login/display-sheet/display-
 import { MatListModule } from '@angular/material/list';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { LayoutModule } from './layout/layout.module';
+import { JsonInterceptor } from './core/services/http/json.interceptor';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const localizationPrefix: string = "/assets/localization/";
-// http://localhost:4200/assets/i18n/tr.json
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, localizationPrefix);
@@ -62,9 +63,16 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatIconModule,
     MatListModule,
     MatBottomSheetModule,
+    MatDialogModule
     //#endregion
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JsonInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

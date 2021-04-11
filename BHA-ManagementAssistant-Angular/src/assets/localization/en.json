@@ -3,6 +3,10 @@
         "required.error.message": "Please enter a valid value!",
         "username": "User Name",
         "password": "Password",
-        "copyright.text": "Management Assistant, BHA Teknoloji San. ve Tic. Ltd. Şti. registered trademark. All rights reserved. © 2021 BHA"
+        "copyright.text": "Management Assistant, BHA Teknoloji San. ve Tic. Ltd. Şti. registered trademark. All rights reserved. © 2021 BHA",
+        "business.exception": "Business error has occurred."
+    },
+    "login": {
+        "login": "Login"
     }
 }

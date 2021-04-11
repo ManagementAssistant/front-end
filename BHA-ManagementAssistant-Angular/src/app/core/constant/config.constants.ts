@@ -1,1 +1,0 @@
-export const configFileUrl: string = "src/assets/app-config.json"

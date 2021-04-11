@@ -1,25 +1,27 @@
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injector } from "@angular/core";
 import { Observable } from "rxjs";
-import { ConfigService } from "src/app/config/config-service";
+import { AppConfig } from "src/app/config/app-config";
+import { GetAppConfig } from "src/app/Utilities/JsonReader";
+import { Model } from "../model/model";
 import { BaseService } from "./base-service";
 import { IHttpOptions } from "./http/ihttp-options";
 
 export abstract class ApiService extends BaseService {
 
     private _http: HttpClient;
+    private _appConfig: AppConfig = new AppConfig();
+    private _route?: string;
+
     public getHeaders?: () => HttpHeaders | { [header: string]: string | string[]; };
     public getParams?: () => HttpParams | { [param: string]: string | string[]; };
 
-    constructor(injector: Injector) {
+    constructor(injector: Injector, route?: string) {
         super(injector);
 
         this._http = injector.get<HttpClient>(HttpClient);
-        let configService: ConfigService = injector.get<ConfigService>(ConfigService);
-    }
-
-    get http(): HttpClient {
-        return this._http;
+        this._appConfig = GetAppConfig();
+        this._route = route;
     }
 
     private createOptions(): IHttpOptions {
@@ -33,7 +35,20 @@ export abstract class ApiService extends BaseService {
         return options;
     }
 
-    postRequest<T>(url: string, body: string): Observable<T> {
-        return this.http.post<T>(url, body, this.createOptions());
+    get http(): HttpClient {
+        return this._http;
+    }
+
+    get baseUrl(): string {
+        return this._appConfig.BaseUrl ? this._appConfig.BaseUrl : "";
+    }
+
+    get apiPrefix(): string {
+        return this._appConfig.ApiPrefix ? this._appConfig.ApiPrefix : "";
+    }
+
+    postRequest<T>(body: Model | string, url?: string): Observable<T> {
+        let requestedUrl = url ? url : this.baseUrl + "/" + this.apiPrefix + "/" + this._route;
+        return this.http.post<T>(requestedUrl, JSON.stringify(body), this.createOptions());
     }
 }

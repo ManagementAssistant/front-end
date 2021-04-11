@@ -3,6 +3,10 @@
         "required.error.message": "Lütfen geçerli bir değer giriniz!",
         "username": "Kullanıcı Adı",
         "password": "Parola",
-        "copyright.text": "Yönetim Asistanı, BHA Teknoloji San. ve Tic. Ltd. Şti. tescilli markasıdır. Tüm hakları saklıdır. © 2021 BHA"
+        "copyright.text": "Yönetim Asistanı, BHA Teknoloji San. ve Tic. Ltd. Şti. tescilli markasıdır. Tüm hakları saklıdır. © 2021 BHA",
+        "business.exception": "Bir iş hatası oluştu."
+    },
+    "login": {
+        "login": "Giriş"
     }
 }
