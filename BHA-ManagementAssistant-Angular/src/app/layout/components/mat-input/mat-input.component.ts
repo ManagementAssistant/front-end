@@ -29,7 +29,6 @@ export class MatInputComponent extends BaseInputComponent implements OnInit, Aft
   inputElementRef?: ElementRef;
 
   public styles: string = '';
-  public labelColorCode: string = "magenta";
 
   constructor(viewContainerRef: ViewContainerRef, private _renderer: Renderer2) {
     super(viewContainerRef);

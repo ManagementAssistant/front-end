@@ -1,4 +1,6 @@
 import { Injectable, Injector } from "@angular/core";
+import { Observable, EMPTY } from "rxjs";
+import { map } from "rxjs/operators";
 import { ErrorPopupComponent } from "../components/popup/error-popup/error-popup.component";
 import { ApiService } from "../core/services/api-service";
 import { LoginType } from "../enums/login-type-enum";
@@ -8,6 +10,7 @@ import { LocalizationService } from "./localization-service";
 import { PopupService } from "./popup-service";
 import { RouterService } from "./router-service";
 import { StorageService } from "./storage-service";
+
 
 @Injectable()
 export class LoginService extends ApiService {
@@ -30,28 +33,31 @@ export class LoginService extends ApiService {
         this._popupService = this.injector.get<PopupService>(PopupService);
     }
 
-    public login(authenticationModel: AuthenticationModel): void {
+    public login(authenticationModel: AuthenticationModel): Observable<void> {
         switch (authenticationModel.LoginType) {
             case LoginType.UserNameAndPassword:
-                this.loginWithUserName(authenticationModel);
-                break;
+                return this.loginWithUserName(authenticationModel).pipe(map(
+                    (authResponse: AuthenticationResponseModel) => {
+                        if (authResponse.isLogin === true && authResponse.token != null) {
+                            this._storageService?.SetToken(authResponse.token);
+                            this._routerService?.NavigateDashboard();
+                        }
+                        else {
+                            this._popupService?.OpenPopup(ErrorPopupComponent);
+                        }
+                    }
+                ));
             default:
-                this._localizationService?.get('global.business.exception').subscribe((message) => this.callError(message));
+                return EMPTY.pipe(map(() => {
+                    this._localizationService?.get('global.business.exception').subscribe((message) => this.callError(message))
+                }));
         }
     }
 
-    private loginWithUserName(authenticationModel: AuthenticationModel): void {
-        this.postRequest<AuthenticationResponseModel>(authenticationModel).subscribe((response: AuthenticationResponseModel) => {
-            if (response.isLogin === true) {
-                if (response.token != null) {
-                    this._storageService?.SetToken(response.token);
-                    this._routerService?.NavigateDashboard();
-                }
-            }
-            else {
-                this._popupService?.OpenPopup(ErrorPopupComponent);
-            }
-        });
+    private loginWithUserName(authenticationModel: AuthenticationModel): Observable<AuthenticationResponseModel> {
+        return this.postRequest<AuthenticationResponseModel>(authenticationModel).pipe(
+            map((authResponse: AuthenticationResponseModel) => authResponse)
+        );
     }
 
     private callError(message: string): void {
