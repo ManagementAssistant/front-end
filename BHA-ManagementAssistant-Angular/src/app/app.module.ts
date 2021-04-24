@@ -23,6 +23,9 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { LayoutModule } from './layout/layout.module';
 import { JsonInterceptor } from './core/services/http/json.interceptor';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
 
 const localizationPrefix: string = "/assets/localization/";
 
@@ -38,7 +41,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     LoginComponent,
     InputDirective,
     MatInputComponent,
-    DisplaySheetComponent
+    DisplaySheetComponent,
+    SideBarComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +67,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatIconModule,
     MatListModule,
     MatBottomSheetModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSidenavModule,
+    MatToolbarModule
     //#endregion
   ],
   providers: [
