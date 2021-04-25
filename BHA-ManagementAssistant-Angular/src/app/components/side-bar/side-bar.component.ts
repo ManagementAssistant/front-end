@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BaseComponent } from 'src/app/core/components/base-component';
+import { AuthenticationService } from 'src/app/services/authentication-service';
 
 @Component({
     selector: 'side-bar',
@@ -14,24 +15,36 @@ export class SideBarComponent extends BaseComponent implements OnInit {
     isShowing = false;
     showSubSubMenu: boolean = false;
 
+    //#region Services
+    private _authenticationService?: AuthenticationService;
+    //#endregion
 
     constructor(viewContainerRef: ViewContainerRef) {
         super(viewContainerRef);
+
+        this.injectServices();
     }
 
-    ngOnInit(): void {
+    private injectServices(): void {
+        this._authenticationService = this.injector.get<AuthenticationService>(AuthenticationService);
     }
 
-    mouseenter() {
+    public mouseenter(): void {
         if (!this.isExpanded) {
             this.isShowing = true;
         }
     }
 
-    mouseleave() {
+    public mouseleave(): void {
         if (!this.isExpanded) {
             this.isShowing = false;
         }
     }
 
+    public logout(): void {
+        this._authenticationService?.logout();
+    }
+
+    ngOnInit(): void {
+    }
 }

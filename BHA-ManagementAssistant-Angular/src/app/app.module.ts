@@ -26,6 +26,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { DialogPopupComponent } from './components/popup/dialog-popup/dialog-popup.component';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
 
 const localizationPrefix: string = "/assets/localization/";
 
@@ -42,7 +45,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     InputDirective,
     MatInputComponent,
     DisplaySheetComponent,
-    SideBarComponent
+    SideBarComponent,
+    DialogPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +73,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatBottomSheetModule,
     MatDialogModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatGridListModule,
+    //#endregion
+
+    //#region Modules
+    DashboardModule,
     //#endregion
   ],
   providers: [

@@ -11,6 +11,10 @@ export class StorageService extends BaseService {
         localStorage.setItem('token', token);
     }
 
+    public RemoveToken(): void {
+        localStorage.removeItem('token');
+    }
+
     public GetToken(): string {
         return localStorage.getItem('token') ?? '';
     }

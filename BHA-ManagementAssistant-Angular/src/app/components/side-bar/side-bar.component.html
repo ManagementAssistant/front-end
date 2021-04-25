@@ -1,9 +1,17 @@
 <mat-toolbar class="example-toolbar">
     <button mat-icon-button (click)="isExpanded = !isExpanded">
         <!-- <mat-icon>menu</mat-icon> -->
-        <img src='assets\icons\icon.png' class="icon" width="50vw" height="50vh">
+        <img src='assets\icons\icon.png' class="icon" width="50vw" height="50vh"
+            style="margin-top: -4px; margin-left: -20%;">
     </button>
-    <!-- <h1 class="example-app-name" style="margin-left: 20px; margin-top: 5px;font-family:;">Yönetim Asistanı</h1> -->
+    <h1 class="example-app-name">{{'product.name' | translate}}</h1>
+    <span class="spacer"></span>
+    <button mat-icon-button>
+        <mat-icon>manage_accounts</mat-icon>
+    </button>
+    <button mat-icon-button (click)="logout()">
+        <mat-icon>logout</mat-icon>
+    </button>
 </mat-toolbar>
 <mat-sidenav-container class="example-container" autosize>
     <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()"

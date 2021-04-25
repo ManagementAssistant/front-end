@@ -5,9 +5,22 @@
         "password": "Parola",
         "copyright.text": "Yönetim Asistanı, BHA Teknoloji San. ve Tic. Ltd. Şti. tescilli markasıdır. Tüm hakları saklıdır. © 2021 BHA",
         "business.exception": "Bir iş hatası oluştu.",
-        "wait": "Bekleyiniz..."
+        "wait": "Bekleyiniz...",
+        "ok": "Tamam",
+        "cancel": "İptal"
+    },
+    "product": {
+        "name": "Yönetim Asistanı"
     },
     "login": {
         "login": "Giriş"
+    },
+    "dialog": {
+        "header": "İşlem Gerçekleştiriliyor!",
+        "body": "İşlemi onaylıyor musunuz?"
+    },
+    "user": {
+        "logout.header":"Oturum Sonlandırılıyor!",
+        "logout.body": "Çıkış yapmak istediğinize emin misiniz?"
     }
 }

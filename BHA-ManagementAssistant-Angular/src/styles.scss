@@ -77,3 +77,8 @@ button.active:focus {
     outline: none !important;
     outline-style: none !important;
 }
+
+.mat-dialog-container {
+  border-radius: 8px !important;
+  padding: 0px !important;
+}

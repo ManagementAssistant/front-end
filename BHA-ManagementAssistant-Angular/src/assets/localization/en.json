@@ -5,9 +5,22 @@
         "password": "Password",
         "copyright.text": "Management Assistant, BHA Teknoloji San. ve Tic. Ltd. Şti. registered trademark. All rights reserved. © 2021 BHA",
         "business.exception": "Business error has occurred.",
-        "wait": "Wait..."
+        "wait": "Wait...",
+        "ok": "OK",
+        "cancel": "Cancel"
+    },
+    "product": {
+        "name": "Management Assistant"
     },
     "login": {
         "login": "Login"
+    },
+    "dialog": {
+        "header": "Processing a Transaction!",
+        "body": "Do you confirm the transaction?"
+    },
+    "user": {
+        "logout.header":"Session Terminates!",
+        "logout.body": "Are you sure you want to log out?"
     }
 }

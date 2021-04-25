@@ -2,9 +2,9 @@ import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { BaseComponent } from 'src/app/core/components/base-component';
 import { StylesOptions } from 'src/app/models/styles-options';
 import { FormBuilder } from '@angular/forms';
-import { LoginService } from 'src/app/services/login-service';
 import { AuthenticationModel } from 'src/app/models/login/authentication-model';
 import { LoginType } from 'src/app/enums/login-type-enum';
+import { AuthenticationService } from 'src/app/services/authentication-service';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +27,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
   //#endregion
 
   //#region Services
-  private _loginService?: LoginService;
+  private _authenticatioService?: AuthenticationService;
   //#endregion
 
   constructor(viewContainerRef: ViewContainerRef, private _formBuilder: FormBuilder) {
@@ -45,7 +45,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
   }
 
   private injectServices(): void {
-    this._loginService = this.injector.get<LoginService>(LoginService);
+    this._authenticatioService = this.injector.get<AuthenticationService>(AuthenticationService);
   }
 
   onSubmit() {
@@ -54,7 +54,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
     authenticationModel.UserPassword = this.withUserNameForm.value.userpassword;
     authenticationModel.LoginType = LoginType.UserNameAndPassword;
     this.loginButtonSetPropBeforeLogin();
-    this._loginService?.login(authenticationModel).subscribe(
+    this._authenticatioService?.login(authenticationModel).subscribe(
       (value: void) => {
         this.loginButtonSetPropAfterLogin();
       }
