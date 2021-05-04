@@ -23,3 +23,8 @@ export function isEmpty(object: any): boolean {
 
     return false;
 }
+
+export function getEnumKeyWithValue(value: number, enumModel: any): string {
+    let keys = Object.keys(enumModel).find(condition => enumModel[condition] === value);
+    return keys ? keys : "";
+}

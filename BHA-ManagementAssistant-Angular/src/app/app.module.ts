@@ -29,6 +29,7 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { DialogPopupComponent } from './components/popup/dialog-popup/dialog-popup.component';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { AuthenticationInterceptor } from './core/services/http/auth.interceptor';
 
 const localizationPrefix: string = "/assets/localization/";
 
@@ -82,6 +83,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     //#endregion
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthenticationInterceptor,
+      multi: true
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JsonInterceptor,

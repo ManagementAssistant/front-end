@@ -1,6 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { AuthenticationService } from "./authentication-service";
+import { MenuElementService } from "./entity/menu-element.service";
 import { LocalizationService } from "./localization-service";
 import { RouterService } from "./router-service";
 import { StorageService } from "./storage-service";
@@ -13,7 +14,8 @@ import { StorageService } from "./storage-service";
         RouterService,
         LocalizationService,
         AuthenticationService,
-        StorageService
+        StorageService,
+        MenuElementService
     ]
 })
 export class ServiceModule { }

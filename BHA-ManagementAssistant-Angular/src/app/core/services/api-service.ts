@@ -47,8 +47,24 @@ export abstract class ApiService extends BaseService {
         return this._appConfig.ApiPrefix ? this._appConfig.ApiPrefix : "";
     }
 
+    get getUrl(): string {
+        return this.baseUrl + "/" + this.apiPrefix + "/" + this._route;
+    }
+
     postRequest<T>(body: Model | string, url?: string): Observable<T> {
-        let requestedUrl = url ? url : this.baseUrl + "/" + this.apiPrefix + "/" + this._route;
+        let requestedUrl = url ? url : this.getUrl;
         return this.http.post<T>(requestedUrl, JSON.stringify(body), this.createOptions());
+    }
+
+    getRequest<T>(url: string): Observable<T> {
+        return this.http.get<T>(url, this.createOptions());
+    }
+
+    putRequest<T>(url: string, body: string): Observable<T> {
+        return this.http.put<T>(url, body, this.createOptions());
+    }
+
+    deleteRequest<T>(url: string): Observable<T> {
+        return this.http.delete<T>(url, this.createOptions());
     }
 }

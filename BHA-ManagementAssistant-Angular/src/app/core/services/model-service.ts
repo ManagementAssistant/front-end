@@ -8,25 +8,28 @@ export abstract class ModelService<T extends Model, TID = number> extends ApiSer
     controller?: string;
 
     constructor(injector: Injector, controller?: string) {
-        super(injector);
+        super(injector, controller);
 
         this.controller = controller;
     }
 
     getByID(id: TID): Observable<T> {
-        throw new Error("Method not implemented.");
-    }
-    getList(): Observable<T[]> {
-        throw new Error("Method not implemented.");
-    }
-    create(model: T): Observable<T> {
-        throw new Error("Method not implemented.");
-    }
-    update(model: T): Observable<T> {
-        throw new Error("Method not implemented.");
-    }
-    deleteByID(id: TID): Observable<T> {
-        throw new Error("Method not implemented.");
+        return this.getRequest<T>(this.getUrl + '/' + id);
     }
 
+    getList(): Observable<T[]> {
+        return this.getRequest<T[]>(this.getUrl);
+    }
+
+    create(model: T): Observable<T> {
+        return this.postRequest<T>(this.getUrl, JSON.stringify(model));
+    }
+
+    update(model: T): Observable<T> {
+        return this.putRequest<T>(this.getUrl + '/' + model.ID, JSON.stringify(model));
+    }
+
+    deleteByID(id: TID): Observable<T> {
+        return this.deleteRequest<T>(this.getUrl + '/' + id);
+    }
 }
