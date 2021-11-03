@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { StorageService } from './services/storage-service';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +10,12 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   title = 'BHA-ManagementAssistant-Angular';
 
-  // constructor(translate: TranslateService) {
-  //   translate.addLangs(['tr', 'en']);
-  //   translate.setDefaultLang('tr'); 
+  constructor(translate: TranslateService) {
+    localStorage.setItem('token', 'token');
+    translate.addLangs(['tr', 'en']);
+    translate.setDefaultLang('tr'); 
 
-  //   const browserLang = translate.getBrowserLang();
-  //   translate.use(browserLang.match(/tr|en/) ? browserLang : 'tr');
-  // }
+    const browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/tr|en/) ? browserLang : 'tr');
+  }
 }

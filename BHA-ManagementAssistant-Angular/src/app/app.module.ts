@@ -30,6 +30,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { DialogPopupComponent } from './components/popup/dialog-popup/dialog-popup.component';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { AuthenticationInterceptor } from './core/services/http/auth.interceptor';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 const localizationPrefix: string = "/assets/localization/";
 
@@ -76,6 +77,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatSidenavModule,
     MatToolbarModule,
     MatGridListModule,
+    MatCheckboxModule,
     //#endregion
 
     //#region Modules
@@ -94,6 +96,6 @@ export function HttpLoaderFactory(http: HttpClient) {
       multi: true
     },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [MainComponent]
 })
 export class AppModule { }
